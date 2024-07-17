@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View, Alert, StatusBar as RNStatusBar } from 'react-native';
+import { Modal, Pressable, StyleSheet, Text, View, Alert, StatusBar as RNStatusBar, TextInput } from 'react-native';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -12,6 +12,7 @@ export default function App() {
           <Text style={styles.textStyle}>Show Modal</Text>
         </Pressable>
         <Text style={styles.text}>PostCheck</Text>
+        <Text style={styles.line}></Text>
       <Modal
         animationType="slide"
         transparent={true}
@@ -31,6 +32,17 @@ export default function App() {
           </View>
         </View>
       </Modal>
+
+      <View>
+      <TextInput
+        style={{
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1,
+        }}
+        defaultValue="URL"
+      />
+      </View>
 
       <RNStatusBar style="auto" />
     </View>
@@ -97,4 +109,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
+  line: {
+    width: '100%',
+    height: 3,              
+    backgroundColor: 'silver'
+  }
 });

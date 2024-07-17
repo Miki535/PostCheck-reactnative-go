@@ -5,7 +5,6 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <View style={styles.container}>
       <View style={styles.main}>
         <Pressable
           style={[styles.button, styles.buttonOpen]}
@@ -13,8 +12,6 @@ export default function App() {
           <Text style={styles.textStyle}>Show Modal</Text>
         </Pressable>
         <Text style={styles.text}>PostCheck</Text>
-      </View>
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 18,
+    fontSize: 25,
     color: 'orange',
     textAlign: 'center',
   },

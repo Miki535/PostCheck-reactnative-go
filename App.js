@@ -1,49 +1,26 @@
 import React, { useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, View, Alert, StatusBar as RNStatusBar, TextInput } from 'react-native';
+import * as Font from 'expo-font';
 
+const fonts = () => Font.loadAsync({
+  'Playwrite': require('./fonts/PlaywriteCU-Regular.ttf'),
+});
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-      <View style={styles.main}>
-        <Pressable
-          style={[styles.button, styles.buttonOpen]}
-          onPress={() => setModalVisible(true)}>
-          <Text style={styles.textStyle}>Show Modal</Text>
-        </Pressable>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <Text style={styles.text}>PostCheck</Text>
-        <Text style={styles.line}></Text>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
-
-      <View>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-        }}
-        defaultValue="URL"
-      />
       </View>
 
+      <View style={styles.line}></View>
+
+      <View style={styles.main}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <TextInput style={styles.sdg} placeholder="Enter text here" />
+        </View>
+      </View>
       <RNStatusBar style="auto" />
     </View>
   );
@@ -56,17 +33,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  main: {
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingTop: 60,
-    height: 100,
     backgroundColor: 'white',
+  },
+  main: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
-    fontSize: 25,
+    fontFamily: 'Playwrite',
+    fontSize: 35,
     color: 'orange',
     textAlign: 'center',
+    flex: 1,
   },
   centeredView: {
     flex: 1,
@@ -93,6 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+    marginLeft: 10,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
@@ -111,7 +95,7 @@ const styles = StyleSheet.create({
   },
   line: {
     width: '100%',
-    height: 3,              
-    backgroundColor: 'silver'
-  }
+    height: 3,
+    backgroundColor: 'black',
+  },
 });

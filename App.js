@@ -17,7 +17,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View>
       <Text style={styles.title}>Prototype</Text>
+
+      </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -29,6 +32,8 @@ export default function App() {
       </View>
       <ScrollView style={styles.resultContainer}>
         <Text style={styles.result}>{result}</Text>
+        <Text style={styles.result}>Result</Text>
+        <Text style={styles.line}></Text>
       </ScrollView>
     </View>
   );
@@ -66,5 +71,11 @@ const styles = StyleSheet.create({
   result: {
     fontSize: 16,
     color: 'gray',
+  },
+  line: {
+    flex: 1,
+    width: '100%', // Довжина лінії
+    height: 2,    // Товщина лінії
+    backgroundColor: 'black', // Колір лінії
   },
 });

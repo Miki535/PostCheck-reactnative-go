@@ -22,8 +22,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>Prototype</Text>
       <Text style={styles.line}></Text>
-      <Text></Text>
-      <Text></Text>
+      <BR />
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -34,18 +33,19 @@ export default function App() {
         <Button title="Send" onPress={getInfoFromApi} />
       </View>
       <ScrollView style={styles.resultContainer}>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
+        <BR />
+        <BR />
+        <BR />
         <Text style={styles.result}>Result</Text>
         <Text style={styles.line}></Text>
-        <Text></Text>
+        <BR />
         <Text style={styles.result}>{result}</Text>
       </ScrollView>
     </View>
   );
 }
+//Using <BR /> like <br> in html
+const BR = () => <View style={{ height: 23 }} />;
 
 const styles = StyleSheet.create({
   container: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   result: {
-    fontSize: 20,
+    fontSize: 22,
     color: 'gray',
   },
   line: {

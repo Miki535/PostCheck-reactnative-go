@@ -1,27 +1,35 @@
 import React, { useState } from 'react';
-import { Modal, Pressable, StyleSheet, Text, View, Alert, StatusBar as RNStatusBar, TextInput } from 'react-native';
-import * as Font from 'expo-font';
+import { StyleSheet, Text, TextInput, Button, View, ScrollView } from 'react-native';
+import axios from 'axios';
 
-const fonts = () => Font.loadAsync({
-  'Playwrite': require('./fonts/PlaywriteCU-Regular.ttf'),
-});
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
+  const [url, setUrl] = useState('');
+  const [result, setResult] = useState('');
+
+  const handlePress = async () => {
+    try {
+      const response = await axios.get(url);
+      setResult(JSON.stringify(response.data, null, 2));
+    } catch (error) {
+      setResult('Error fetching data');
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.text}>PostCheck</Text>
+      <Text style={styles.title}>Prototype</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="URL"
+          onChangeText={(text) => setUrl(text)}
+          value={url}
+        />
+        <Button title="Send" onPress={handlePress} />
       </View>
-
-      <View style={styles.line}></View>
-
-      <View style={styles.main}>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <TextInput style={styles.sdg} placeholder="Enter text here" />
-        </View>
-      </View>
-      <RNStatusBar style="auto" />
+      <ScrollView style={styles.resultContainer}>
+        <Text style={styles.result}>{result}</Text>
+      </ScrollView>
     </View>
   );
 }
@@ -29,73 +37,34 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
     backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  header: {
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginVertical: 20,
+  },
+  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 60,
-    backgroundColor: 'white',
+    marginBottom: 20,
   },
-  main: {
+  input: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginRight: 10,
   },
-  text: {
-    fontFamily: 'Playwrite',
-    fontSize: 35,
-    color: 'orange',
-    textAlign: 'center',
+  resultContainer: {
     flex: 1,
+    marginTop: 20,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    marginLeft: 10,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  line: {
-    width: '100%',
-    height: 3,
-    backgroundColor: 'black',
+  result: {
+    fontSize: 16,
+    color: 'gray',
   },
 });

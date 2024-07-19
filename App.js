@@ -7,7 +7,7 @@ export default function App() {
   const [result, setResult] = useState('');
 
   
-  const getMoviesFromApi = () => {
+  const getInfoFromApi = () => {
     return fetch(url)
       .then(response => response.json())
       .then(json => {
@@ -31,7 +31,7 @@ export default function App() {
           onChangeText={(text) => setUrl(text)}
           value={url}
         />
-        <Button title="Send" onPress={getMoviesFromApi} />
+        <Button title="Send" onPress={getInfoFromApi} />
       </View>
       <ScrollView style={styles.resultContainer}>
         <Text></Text>

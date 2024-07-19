@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View >
       <Text style={styles.title}>Prototype</Text>
 
       </View>
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
   },
   line: {
     flex: 1,
-    width: '100%', // Довжина лінії
-    height: 2,    // Товщина лінії
-    backgroundColor: 'black', // Колір лінії
+    width: '100%', 
+    height: 2,
+    backgroundColor: 'black',
   },
 });

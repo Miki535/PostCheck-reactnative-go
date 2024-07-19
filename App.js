@@ -6,13 +6,16 @@ export default function App() {
   const [url, setUrl] = useState('');
   const [result, setResult] = useState('');
 
-  const handlePress = async () => {
-    try {
-      const response = await axios.get(url);
-      setResult(JSON.stringify(response.data, null, 2));
-    } catch (error) {
-      setResult('Error fetching data');
-    }
+  
+  const getMoviesFromApi = () => {
+    return fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        console.log(json);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   return (
@@ -28,7 +31,7 @@ export default function App() {
           onChangeText={(text) => setUrl(text)}
           value={url}
         />
-        <Button title="Send" onPress={handlePress} />
+        <Button title="Send" onPress={getMoviesFromApi} />
       </View>
       <ScrollView style={styles.resultContainer}>
         <Text></Text>

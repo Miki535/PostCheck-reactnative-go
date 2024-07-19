@@ -17,10 +17,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View >
       <Text style={styles.title}>Prototype</Text>
-
-      </View>
+      <Text style={styles.line}></Text>
+      <Text></Text>
+      <Text></Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -31,9 +31,14 @@ export default function App() {
         <Button title="Send" onPress={handlePress} />
       </View>
       <ScrollView style={styles.resultContainer}>
-        <Text style={styles.result}>{result}</Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
         <Text style={styles.result}>Result</Text>
         <Text style={styles.line}></Text>
+        <Text></Text>
+        <Text style={styles.result}>{result}</Text>
       </ScrollView>
     </View>
   );
@@ -46,10 +51,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     alignSelf: 'center',
     marginVertical: 20,
+    color: 'orange',
+    fontStyle: 'italic'
   },
   inputContainer: {
     flexDirection: 'row',
@@ -69,13 +76,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   result: {
-    fontSize: 16,
+    fontSize: 20,
     color: 'gray',
   },
   line: {
-    flex: 1,
-    width: '100%', 
-    height: 2,
-    backgroundColor: 'black',
+    width: '100%',
+    height: 2,   
+    backgroundColor: 'black', 
   },
 });

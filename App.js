@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Prototype</Text>
+      <Text style={styles.title}>PostCheck</Text>
       <Text style={styles.line}></Text>
       <BR />
       <View style={styles.inputContainer}>

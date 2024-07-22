@@ -11,7 +11,7 @@ export default function App() {
     return fetch(url)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
+        setResult(JSON.stringify(json, null, 2));
       })
       .catch(error => {
         console.error(error);

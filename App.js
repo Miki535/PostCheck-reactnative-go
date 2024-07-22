@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, Button, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, View, ScrollView, TouchableOpacity, Clipboard } from 'react-native';
 import axios from 'axios';
 
 export default function App() {
   const [url, setUrl] = useState('');
   const [result, setResult] = useState('');
-
   
   const getInfoFromApi = () => {
     return fetch(url)
@@ -18,10 +17,15 @@ export default function App() {
       });
   };
 
+  const copyJSONToClipboard = () => {
+    Clipboard.setString(result);
+    alert('JSON copied to clipboard!');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>PostCheck</Text>
-      <Text style={styles.line}></Text>
+      <View style={styles.line}></View>
       <BR />
       <View style={styles.inputContainer}>
         <TextInput
@@ -32,11 +36,12 @@ export default function App() {
         />
         <Button title="Send" onPress={getInfoFromApi} />
       </View>
-        <BR />
-        <BR />
-        <BR />
-        <Text style={styles.result}>Result</Text>
-        <Text style={styles.line}></Text>
+      <BR />
+      <Text style={styles.result}>Result</Text>
+      <TouchableOpacity onPress={copyJSONToClipboard}>
+        <Text style={styles.copyButton}>Copy JSON to Clipboard</Text>
+      </TouchableOpacity>
+      <View style={styles.line}></View>
       <ScrollView style={styles.resultContainer}>
         <BR />
         <Text style={styles.result}>{result}</Text>
@@ -44,7 +49,7 @@ export default function App() {
     </View>
   );
 }
-//Using <BR /> like <br> in html
+// Using <BR /> like <br> in html
 const BR = () => <View style={{ height: 23 }} />;
 
 const styles = StyleSheet.create({
@@ -84,7 +89,14 @@ const styles = StyleSheet.create({
   },
   line: {
     width: '100%',
-    height: 2,   
-    backgroundColor: 'black', 
+    height: 2,
+    backgroundColor: 'black',
+    marginBottom: 10,
+  },
+  copyButton: {
+    fontSize: 18,
+    color: 'blue',
+    textDecorationLine: 'underline',
+    marginTop: 10,
   },
 });

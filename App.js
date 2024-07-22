@@ -14,7 +14,7 @@ export default function App() {
         setResult(JSON.stringify(json, null, 2));
       })
       .catch(error => {
-        console.error(error);
+        setResult(JSON.stringify('We didn`t find anything!', null, 2));
       });
   };
 

@@ -39,7 +39,7 @@ export default function App() {
       <BR />
       <Text style={styles.result}>Result</Text>
       <TouchableOpacity onPress={copyJSONToClipboard}>
-        <Text style={styles.copyButton}>Copy JSON to Clipboard</Text>
+        <Text style={styles.copyButton}>Copy</Text>
       </TouchableOpacity>
       <View style={styles.line}></View>
       <ScrollView style={styles.resultContainer}>

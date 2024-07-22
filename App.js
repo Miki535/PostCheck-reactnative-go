@@ -32,12 +32,12 @@ export default function App() {
         />
         <Button title="Send" onPress={getInfoFromApi} />
       </View>
-      <ScrollView style={styles.resultContainer}>
         <BR />
         <BR />
         <BR />
         <Text style={styles.result}>Result</Text>
         <Text style={styles.line}></Text>
+      <ScrollView style={styles.resultContainer}>
         <BR />
         <Text style={styles.result}>{result}</Text>
       </ScrollView>
